@@ -19,12 +19,24 @@ public class LoggingAspect {
 		System.out.println("Second advice mutherfucker!");
 	}
 	
+	@Before("allMethodWithACircle()")
+	public void circleDetectedAdvice()
+	{
+		System.out.println("Thats a circle mutherfucker!");
+	}
+	
 	//This method is a dummy method, used to apply the point cut.
 	//It kinda holds the pointcut.
 	@Pointcut("execution(* get*())")
 	public void allGetters() {}
 	
-	@Pointcut("execution(* ec.edu.upse.facsistel.spring.aop.model.Circle.*(..))")
+	//Applies advice to all methods within a class or set of classes (such as packages)
+	@Pointcut("within(ec.edu.upse.facsistel.spring.aop.model.*)")
 	public void allCircleMethods() {}
+	
+	//Applies advice to all methods that have a given argument.
+	@Pointcut("args(ec.edu.upse.facsistel.spring.aop.model.Circle)")
+	public void allMethodWithACircle() {}
+	
 	
 }
