@@ -1,5 +1,6 @@
 package ec.edu.upse.facsistel.spring.aop.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -7,17 +8,14 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class LoggingAspect {
 	
-	@Before("allGetters() && allCircleMethods()")
-	public void loggingAdvice()
+	@Before("allCircleMethods()")
+	public void loggingAdvice(JoinPoint joinPoint)
 	{
-		System.out.println("Advice run. Get Method called.");
+		//get target of a joinPoint gives a handle on the object to which the method being wrap belongs to.
+		System.out.println(joinPoint.getTarget());
+		
 	}
 	
-	@Before("allGetters()")
-	public void secondAdvice()
-	{
-		System.out.println("Second advice mutherfucker!");
-	}
 	
 	@Before("allMethodWithACircle()")
 	public void circleDetectedAdvice()
