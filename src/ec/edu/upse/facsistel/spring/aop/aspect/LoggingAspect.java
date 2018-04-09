@@ -13,7 +13,11 @@ public class LoggingAspect {
 	{
 		//get target of a joinPoint gives a handle on the object to which the method being wrap belongs to.
 		System.out.println(joinPoint.getTarget());
-		
+	}
+	
+	@Before("args(name)")
+	public void stringArgumentMethods(String name) {
+		System.out.println("A method that takes string arguments has been called. The value is: " + name);
 	}
 	
 	
