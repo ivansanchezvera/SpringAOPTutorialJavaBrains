@@ -19,16 +19,16 @@ public class LoggingAspect {
 	}
 	
 	//@After("args(name)") //Executes wether the method executes successfully or not.
-	@AfterReturning("args(name)") //Executes only whenn a method executes successfully.
-	public void stringArgumentMethods(String name) {
-		System.out.println("A method that takes string arguments has been called. The value is: " + name);
+	@AfterReturning(pointcut="args(name)", returning="returnString") //Executes only whenn a method executes successfully.
+	public void stringArgumentMethods(String name, String returnString) {
+		System.out.println("A method that takes string arguments has been called. The value is: " + name + ", the returned value is: " + returnString);
 	}
 	
 	//Advice executes only when exception is thrown
-	@AfterThrowing("args(name)")
-	public void exceptionAdvice(String name)
+	@AfterThrowing(pointcut="args(name)", throwing="ex")
+	public void exceptionAdvice(String name, Exception ex)
 	{
-		System.out.println("An exception has been thrown!");
+		System.out.println("An exception has been thrown!" + " Exception is: " + ex.toString());
 	}
 	
 	@Before("allMethodWithACircle()")

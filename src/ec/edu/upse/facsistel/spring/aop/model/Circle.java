@@ -13,4 +13,10 @@ public class Circle {
 		this.name = name;
 		throw(new RuntimeException());
 	}
+	
+	public String setNameAndReturn(String name) {
+		System.out.println("Setter of name attribute in circle begins and it will return!");
+		this.name = name;
+		return name;
+	}
 }
