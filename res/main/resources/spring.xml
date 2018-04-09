@@ -16,7 +16,7 @@
 
 	<bean name="circle"
 		class="ec.edu.upse.facsistel.spring.aop.model.Circle">
-		<property name="name" value="circle Name" />
+		<!-- <property name="name" value="circle Name" /> -->
 	</bean>
 
 	<bean name="shapeService"

@@ -1,6 +1,9 @@
 package ec.edu.upse.facsistel.spring.aop.aspect;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -15,11 +18,18 @@ public class LoggingAspect {
 		System.out.println(joinPoint.getTarget());
 	}
 	
-	@Before("args(name)")
+	//@After("args(name)") //Executes wether the method executes successfully or not.
+	@AfterReturning("args(name)") //Executes only whenn a method executes successfully.
 	public void stringArgumentMethods(String name) {
 		System.out.println("A method that takes string arguments has been called. The value is: " + name);
 	}
 	
+	//Advice executes only when exception is thrown
+	@AfterThrowing("args(name)")
+	public void exceptionAdvice(String name)
+	{
+		System.out.println("An exception has been thrown!");
+	}
 	
 	@Before("allMethodWithACircle()")
 	public void circleDetectedAdvice()

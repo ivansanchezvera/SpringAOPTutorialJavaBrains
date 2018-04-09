@@ -9,6 +9,8 @@ public class Circle {
 	}
 
 	public void setName(String name) {
+		System.out.println("Setter of name attribute in circle begins.");
 		this.name = name;
+		throw(new RuntimeException());
 	}
 }
