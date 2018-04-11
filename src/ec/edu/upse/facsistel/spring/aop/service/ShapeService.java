@@ -1,5 +1,6 @@
 package ec.edu.upse.facsistel.spring.aop.service;
 
+import ec.edu.upse.facsistel.spring.aop.aspect.Loggabble;
 import ec.edu.upse.facsistel.spring.aop.model.Circle;
 import ec.edu.upse.facsistel.spring.aop.model.Triangle;
 
@@ -8,6 +9,7 @@ public class ShapeService {
 	private Circle circle;
 	private Triangle triangle;
 	
+	@Loggabble
 	public Circle getCircle() {
 		return circle;
 	}

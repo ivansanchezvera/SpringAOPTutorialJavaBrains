@@ -35,7 +35,7 @@ public class LoggingAspect {
 	
 	//Wraps the method, both before and after. That's why it's called around advice.
 	//Around advice needs a compulsory method as a parameter, AKA Proceeding Joint Point
-	@Around("allGetters()")
+	@Around("@annotation(ec.edu.upse.facsistel.spring.aop.aspect.Loggabble)")
 	public Object myAroundAdvice(ProceedingJoinPoint proceedingJoinPoint)
 	{
 		//Proceed method actually executes the method this advice is wrapping.
@@ -73,5 +73,9 @@ public class LoggingAspect {
 	@Pointcut("args(ec.edu.upse.facsistel.spring.aop.model.Circle)")
 	public void allMethodWithACircle() {}
 	
-	
+	//Having instruments organized in a proper manner (classes into packages)
+	//helps when writing pointcut expressions. That way we can target all 
+	//the methods in a given package, or classes that have a particular ending, etc.
+	@Pointcut("execution(* ec.edu.upse.facsistel.spring.aop.service.*.*(..))")
+	public void allMethodsWithNamingConventions() {}
 }
