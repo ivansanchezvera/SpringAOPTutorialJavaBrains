@@ -11,8 +11,7 @@ public class AopMain {
 	{
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 		ShapeService shapeService = ctx.getBean("shapeService", ShapeService.class);
-		shapeService.getCircle().setName("Dummy name");
-		System.out.println(shapeService.getCircle().setNameAndReturn("Test Return type"));
+		shapeService.getCircle();
 		
 		//To try args pointcut:
 		//shapeService.setCircle(new Circle());
