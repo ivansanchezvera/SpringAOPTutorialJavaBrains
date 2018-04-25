@@ -24,7 +24,17 @@
 		autowire="byName">
 	</bean>
 	
-	<bean name="logginAspect" class="ec.edu.upse.facsistel.spring.aop.aspect.LoggingAspect" />
+	<bean name="loggingAspect" class="ec.edu.upse.facsistel.spring.aop.aspect.LoggingAspect" />
+
+	<aop:config>
+		<aop:aspect id="loggingAspect" ref="loggingAspect">
+			<aop:pointcut id="allGetters" expression="execution(* get**())"/>
+			<aop:around pointcut-ref="allGetters" method="myAroundAdvice"/>
+			<!-- This is equivalent to what's above -->
+			<!-- <aop:around pointcut="execution(* get**())" method="myAroundAdvice"/> -->
+		</aop:aspect>
+		
+	</aop:config>
 
 	<!-- @AspectJ support is enabled by including the following element inside 
 		your XML Schema-based configuration file. -->
