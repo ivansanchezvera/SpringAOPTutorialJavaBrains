@@ -11,8 +11,9 @@ public class ShapeService {
 	
 	@Loggabble
 	public Circle getCircle() {
+		System.out.println("Circle Getter Called");
 		return circle;
-	}
+	} 
 	public void setCircle(Circle circle) {
 		this.circle = circle;
 	}
